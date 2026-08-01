@@ -59,11 +59,11 @@ void print_string(va_list ap)
 void print_all(const char * const format, ...)
 {
 	fmt_t table[] = {
-		{'c', print_char},
-		{'i', print_int},
-		{'f', print_float},
-		{'s', print_string},
-		{'\0', NULL}
+		{"c", print_char},
+		{"i", print_int},
+		{"f", print_float},
+		{"s", print_string},
+		{NULL, NULL}
 	};
 	va_list ap;
 	unsigned int i, j, printed;
@@ -74,9 +74,9 @@ void print_all(const char * const format, ...)
 	while (format && format[i])
 	{
 		j = 0;
-		while (table[j].type != '\0')
+		while (table[j].type != NULL)
 		{
-			if (table[j].type == format[i])
+			if (table[j].type[0] == format[i])
 			{
 				if (printed)
 					printf(", ");
